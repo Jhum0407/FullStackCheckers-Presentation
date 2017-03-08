@@ -92,7 +92,6 @@ blackPiece.src = '../assets/img/blackChip.png';
 
 function initialize(){
 	draw();
-	return setInterval(draw , 10);
 }
 
 function draw(){
