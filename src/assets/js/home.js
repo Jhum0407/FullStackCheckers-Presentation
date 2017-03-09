@@ -1,6 +1,29 @@
 var canvas = document.getElementById("checkerBoard");
 var ctx = canvas.getContext("2d");
 var canDrag = false;
+var NewAccountService = (function () {
+		function NewAccountService(http) {
+				this.http = http;
+		}
+NewAccountService.prototype.didSubmit = function (data) {
+				var _this = this;
+				console.log(data);
+				this.http.post("http://localhost:8080/board/", data).subscribe(function (result) {
+						_this.responseHolder(status, result.json());
+						return result.json();
+				});
+		};
+		NewAccountService.prototype.responseHolder = function (status, response) {
+				if (response.error) {
+						console.log("error " + response.error.message);
+				}
+				else
+						console.log("success");
+		};
+		return NewAccountService;
+}());
+
+
 checkersPieces = [[
 			{"color":"empty","identifier":-1,"king":false},
 			{"color":"red","identifier":1,"king":false},
@@ -105,7 +128,7 @@ function drawBoard(){
 			ctx.moveTo(0,70*j);
 			ctx.lineTo(560,70*j);
 			ctx.stroke();
- 
+
 			ctx.moveTo(70*i,0);
 			ctx.lineTo(70*i,560);
 			ctx.stroke();
@@ -134,7 +157,7 @@ function drawCheckers(redPiece, blackPiece){
 			var y = i * 70;
 			if(checkersPieces[i][j].color == "black"){
 				ctx.drawImage(blackPiece, x, y, 70, 70);
-				
+
 			}
 			else if(checkersPieces[i][j].color == "red"){
 				ctx.drawImage(redPiece, x, y, 70, 70);
@@ -177,7 +200,7 @@ function onClick(e){
  			}
 		}
 	}
-	
+
 }
 
 function afterClick(){
