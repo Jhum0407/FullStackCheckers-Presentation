@@ -3,7 +3,7 @@ var blockWhite = "#cc2030", blockGray = "#2f2f2f", highlightedColor = "#ff0088";
 var selectedLineWidth = 4, selectedPiece = null;
 var pieceLocation = JSON.parse(readJSON('../assets/json/pieces.json'));
 var blackPiece = new Image();
-blackPiece.src = '../assets/img/blackChip.png';
+blackPiece.src = '../assets/img/tariq.jpg';
 
 //Making image objects
 var redPiece = new Image();
