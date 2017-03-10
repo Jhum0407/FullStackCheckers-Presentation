@@ -1,25 +1,15 @@
 import { Component } from '@angular/core';
-// import { NavController } from 'ionic-angular';
-import { BoardService } from '../../services/BoardService';
-// import { GetCheckers } from '../../hardcodedcheckers/getcheckers';
+
+import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
-  providers: [BoardService]
+  templateUrl: 'home.html'
 })
+export class HomePage {
 
-export class BoardController {
-  constructor(private boardService: BoardService) {}
-
-  getBoard() {
-    this.boardService.getBoard();
+  constructor(public navCtrl: NavController) {
+    
   }
+
 }
-//
-// export class HomePage {
-//
-//   constructor(public navCtrl: NavController) {
-//   }
-//
-// }
